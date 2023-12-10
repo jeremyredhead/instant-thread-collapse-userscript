@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          Quick&Dirty Instant Thread Collapsation
 // @description   Ctrl+click a message to hide/show its replies
-// @version       0.1.2
+// @version       0.1.3
 // @match         https://instant.leet.nu/room/*
 // ==/UserScript==
 
@@ -40,7 +40,7 @@ Instant.listen('message.click', evt => {
 	var m = getMsgNode(c.target) // message element
 
 	/* Filter out clicks on links */
-	if (m.matches('a, a *')) return
+	if (c.target.matches('a, a *')) return
 
 	// TODO: configurable accelerator key(s)
 	// FIXME: prevent text selection when shift is the accelerator key
