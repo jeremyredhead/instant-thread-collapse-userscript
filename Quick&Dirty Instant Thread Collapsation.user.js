@@ -20,4 +20,8 @@ var css = `
 }
 `
 
+var style = document.createElement('style')
+style.textContent = css
+document.head.appendChild(style)
+
 // TODO: add class is-hidden to replies of collapsed thread
