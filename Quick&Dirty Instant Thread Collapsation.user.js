@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     Quick&Dirty Instant Thread Collapsation
-// @version  0.1.0
+// @version  0.1.1
 // @match    https://instant.leet.nu/room/*
 // ==/UserScript==
 
@@ -45,7 +45,8 @@ Instant.listen('message.click', evt => {
 		evt.cancel()
 		var hideThread = m.classList.toggle('hide-thread')
 		// Instant uses .is-hidden to determine if keyboard navigation is prevented
-		m.querySelector('.replies').childNodes.forEach(el => {
+		var replies = m.querySelector('.replies')
+		replies && replies.childNodes.forEach(el => {
 			// don't remove is-hidden from /data commands
 			if (el.matches('.message:not(.data)')) {
 				el.classList.toggle('is-hidden', hideThread)
