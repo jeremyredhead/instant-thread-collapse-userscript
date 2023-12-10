@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name          Quick&Dirty Instant Thread Collapsation
+// @name          The Instant Thread Collapsinator!
 // @description   Ctrl+click a message to hide/show its replies (n.b. messages' replies can be preemptively hidden before they have any)
 // @version       0.1.3
 // @match         https://instant.leet.nu/room/*
