@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     Quick&Dirty Instant Thread Collapsation
-// @version  0.1.1
+// @version  0.1.2
 // @match    https://instant.leet.nu/room/*
 // ==/UserScript==
 
@@ -41,7 +41,9 @@ Instant.listen('message.click', evt => {
 	/* Filter out clicks on links */
 	if (m.matches('a, a *')) return
 
-	if (c.shiftKey && !c.ctrlKey && !c.altKey && !c.metaKey) {
+	// TODO: configurable accelerator key(s)
+	// FIXME: prevent text selection when shift is the accelerator key
+	if (!c.shiftKey && c.ctrlKey && !c.altKey && !c.metaKey) {
 		evt.cancel()
 		var hideThread = m.classList.toggle('hide-thread')
 		// Instant uses .is-hidden to determine if keyboard navigation is prevented
