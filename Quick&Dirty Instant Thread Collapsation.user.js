@@ -1,7 +1,8 @@
 // ==UserScript==
-// @name     Quick&Dirty Instant Thread Collapsation
-// @version  0.1.2
-// @match    https://instant.leet.nu/room/*
+// @name          Quick&Dirty Instant Thread Collapsation
+// @description   Ctrl+click a message to hide/show its replies
+// @version       0.1.2
+// @match         https://instant.leet.nu/room/*
 // ==/UserScript==
 
 var css = `
