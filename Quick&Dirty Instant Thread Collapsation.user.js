@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     Quick&Dirty Instant Thread Collapsation
-// @version  0.0.3
+// @version  0.0.4
 // @match    https://instant.leet.nu/room/*
 // ==/UserScript==
 
@@ -24,13 +24,19 @@ var style = document.createElement('style')
 style.textContent = css
 document.head.appendChild(style)
 
-var js = `
+function code() {
 document.addEventListener("DOMContentLoaded", () => {
-window.$onload(() => {
+
+function getMsgNode(el) {
+	do {
+		if (el.matches('.message')) return el
+	} while (el = el.parentElement)
+	return null
+}
 
 Instant.listen('message.click', evt => {
-	var c = evt.source // click event
-	var m = c.target // message element
+	var c = evt.data.source // click event
+	var m = getMsgNode(c.target) // message element
 
 	/* Filter out clicks on links */
 	if (m.matches('a, a *')) return
@@ -48,10 +54,9 @@ Instant.listen('message.click', evt => {
 	}
 })
 
-}) // end $onload
 }) // end DOMContentLoaded
-`
+} // end function code
 
 var script = document.createElement('script')
-script.textContent = js
+script.textContent = `(${code.toString()})()`
 document.head.appendChild(script)
