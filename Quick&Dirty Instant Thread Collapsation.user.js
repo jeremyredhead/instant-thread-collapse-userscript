@@ -1,20 +1,23 @@
 // ==UserScript==
 // @name     Quick&Dirty Instant Thread Collapsation
-// @version  0.0.1
+// @version  0.0.2
 // @match    https://instant.leet.nu/room/*
 // ==/UserScript==
 
 var css = `
-.hide-thread .replies {
+.hide-thread > .replies > .message {
 	display: none;
 }
 
-.hide-thread::after {
+.hide-thread.message > .replies {
+	padding-top: 6px
+}
+
+.hide-thread > .replies::after {
 	display: block;
 	content: '[thread collapsed]';
-	padding: 5px;
 	color: gray;
-	margin-left: 1em;
 }
 `
 
+// TODO: add class is-hidden to replies of collapsed thread
